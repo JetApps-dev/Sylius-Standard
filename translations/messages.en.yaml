@@ -1,0 +1,10 @@
+app:
+    form:
+        product:
+            color: 
+                title: Product color
+                label: Color
+                variants:
+                    red: Red
+                    green: Green
+                    blue: Blue
