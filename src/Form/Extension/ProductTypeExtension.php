@@ -6,7 +6,6 @@ namespace App\Form\Extension;
 
 
 use App\Entity\Product\ProductColorInterface;
-use App\Service\ProductColorService;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,12 +20,21 @@ final class ProductTypeExtension extends AbstractTypeExtension
             ->add('color', ChoiceType::class, [
                 'required' => false,
                 'label' => 'app.form.product.color.title',
-                'choices' => ProductColorService::getAvailableColorChoices(),
+                'choices' => $this->getAvailableColorChoices(),
             ]);
     }
 
     public static function getExtendedTypes(): iterable
     {
         return [ProductType::class];
+    }
+
+    private function getAvailableColorChoices(): array
+    {
+        return [
+            _('app.form.product.color.variants.blue') => ProductColorInterface::COLOR_BLUE,
+            _('app.form.product.color.variants.red') => ProductColorInterface::COLOR_RED,
+            _('app.form.product.color.variants.green') => ProductColorInterface::COLOR_GREEN,
+        ];
     }
 }

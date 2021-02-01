@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <mapped-superclass name="Payum\Core\Model\Token" table="Token">
+    <id name="hash" type="string" column="hash"/>
+    <field name="details" type="object" column="details" nullable="true"/>
+    <field name="afterUrl" type="text" column="after_url" nullable="true"/>
+    <field name="targetUrl" type="text" column="target_url" nullable="false"/>
+    <field name="gatewayName" type="string" column="gateway_name" length="255" nullable="false"/>
+  </mapped-superclass>
+</doctrine-mapping>
